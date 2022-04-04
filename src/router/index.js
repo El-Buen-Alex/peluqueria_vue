@@ -4,12 +4,19 @@ import About from "../views/About.vue";
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import auth from "../logic/auth";
-
+import ShowCustomers from '../views/customers/ShowCustomers.vue'
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+    children: [
+      {
+        path: "/customers",
+        name: "Customers",
+        component: ShowCustomers,
+      }
+    ]
   },
   {
     path: "/about",
@@ -33,16 +40,17 @@ const router = new VueRouter({
   routes:routes
 });
 
-  //  router.beforeResolve(async (to, from, next) =>{
-     
-  //      if(!auth.isLoggedIn() && to.name!=='Login' && to.name!=='Register'){
-        
-  //         return false;
-  //      }
-  //  })
-  router.beforeEach((to, from, next) => {
-    if (to.name !== 'Login' && to.name !== 'Register' && !auth.isLoggedIn()) next({ name: 'Login' })
-    // if the user is not authenticated, `next` is called twice
-    next()
-  })
+    router.beforeResolve(async (to, from, next) =>{
+   
+        if(!auth.isLoggedIn() && to.name!=='Login' && to.name!=='Register'){
+      
+          next({ name: 'Login' })
+        }
+        next()
+    })
+  // router.beforeEach((to, from, next) => {
+  //   if (to.name !== 'Login' && to.name !== 'Register' && !auth.isLoggedIn()) next({ name: 'Login' })
+  //   // if the user is not authenticated, `next` is called twice
+  //   next()
+  // })
 export default router;

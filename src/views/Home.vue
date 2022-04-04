@@ -1,9 +1,25 @@
 <template>
-  <div>
-    <!-- <va-sidebar :theme="sidebarTheme">
-        <va-sidebar-group :items="getStartedItems" :title="'Getting started'" :defaultOpenLevel="1" :show-toggle="showToggle"/>
-        <va-sidebar-group :items="coreItems" :title="'Components'" :defaultOpenLevel="0" :show-toggle="showToggle"/>
-    </va-sidebar> -->
+  <div class="row h-100 w-100">
+   <div class="col-12 col-lg-2 h-100 bg-dark " v-if="show_toggle" @click="showToggle">
+     <div class="text-center mt-5 w-100">
+       <div class="w-100">
+         <router-link to="/" class="bg-light fw-bold text-decoration-none w-100 py-2 px-5">Go to Home</router-link>
+       </div>
+       <div class="w-100 border border-light mt-5 mb-3"></div>
+        <div class="w-100">
+         <router-link to="/customers" class="bg-light fw-bold text-decoration-none w-100 py-2 px-5">Customers</router-link>
+       </div>
+      </div> 
+    </div>
+    <div v-else class="col-12 col-lg-1 bg-dark h-100">
+      <div class="d-flex justify-content-center w-100">
+        <button class="btn btn-success w-75 mt-2" @click="showToggle">Show Options</button>
+      </div>
+    </div>
+    <div :class="'col-12 '+class_container">
+       <router-view></router-view>
+       
+    </div>
   </div>
 </template>
 
@@ -11,94 +27,18 @@
 export default {
   data () {
     return {
-      sidebarTheme: 'default',
-      getStartedItems: [
-        {
-          name: 'Introduction',
-          route: '/documentation/introduction',
-          children: [
-            { name: 'Installation', element: '#installation' },
-            { name: 'Quickstart', element: '#quickstart' },
-            {
-              name: 'GitHub',
-              external: 'https://github.com/nvms/vue-atlas',
-              icon: 'github-alt',
-              iconStyle: 'brands'
-            }
-          ]
-        }
-      ],
-      coreItems: [
-        { name: 'AnimQueue', route: '/documentation/animqueue' },
-        { name: 'App', route: '/documentation/App' },
-        { name: 'Affix', route: '/documentation/affix' },
-        { name: 'Alert', route: '/documentation/alert' },
-        { name: 'Aside', route: '/documentation/aside' },
-        {
-            name: 'Badge',
-            route: '/documentation/badge',
-            icon: 'pencil-alt',
-            iconSize: '12px',
-            iconColor: 'red',
-            iconStyle: 'solid'
-        },
-        { name: 'Button', route: '/documentation/button' },
-        { name: 'Card', route: '/documentation/card' },
-        { name: 'Checkbox', route: '/documentation/checkbox' },
-        {
-          name: 'Colorpicker',
-          route: '/documentation/colorpicker',
-          lozenge: {
-            type: 'purple',
-            text: 'NEW',
-            bold: true
-          }
-        },
-        { name: 'Datepicker', route: '/documentation/datepicker' },
-        { name: 'Dropdown', route: '/documentation/dropdown' },
-        {
-          name: 'Form',
-          route: '/documentation/form',
-          children: [
-            { name: 'Input', route: '/documentation/form/input' },
-            { name: 'Textarea', route: '/documentation/form/textarea' },
-            { name: 'Validation', route: '/documentation/form/validation' }
-          ]
-        },
-        { name: 'Grid', route: '/documentation/grid' },
-        { name: 'Icon', route: '/documentation/icon' },
-        { name: 'Loading', route: '/documentation/loading' },
-        { name: 'Lozenge', route: '/documentation/lozenge' },
-        { name: 'Minibar', route: '/documentation/minibar' },
-        { name: 'Modal', route: '/documentation/modal' },
-        { name: 'Notification', route: '/documentation/notification' },
-        { name: 'Page header', route: '/documentation/pageheader' },
-        { name: 'Pagination', route: '/documentation/pagination' },
-        { name: 'Placeholder', route: '/documentation/placeholder' },
-        { name: 'Progress tracker', route: '/documentation/progresstracker' },
-        { name: 'Radio', route: '/documentation/radio' },
-        { name: 'Range', route: '/documentation/range' },
-        { name: 'Select', route: '/documentation/select' },
-        { name: 'Sidebar', route: '/documentation/sidebar' },
-        { name: 'Table', route: '/documentation/table' },
-        { name: 'Tabs', route: '/documentation/tabs' },
-        { name: 'Timepicker', route: '/documentation/timepicker' },
-        { name: 'Toast', route: '/documentation/toast' },
-        { name: 'Toggle', route: '/documentation/toggle' },
-        { name: 'Tooltip', route: '/documentation/tooltip' },
-        { name: 'Topbar', route: '/documentation/topbar' },
-        { name: 'Typeahead', route: '/documentation/typeahead' }
-      ]
+      show_toggle:false,
+      class_container:"col-lg-11"
     }
   },
   methods: {
-    demoMethod () {
-      this.VaModal.confirm({
-        title: 'Hello!',
-        message: `This modal exists to show how methods
-        can be applied to Minibar items.`,
-        type: 'info'
-      })
+    showToggle (){
+      this.show_toggle=!this.show_toggle;
+      if(this.show_toggle){
+        this.class_container="col-lg-10";
+      }else{
+        this.class_container="col-lg-11"
+      }
     }
   }
 }

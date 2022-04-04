@@ -36,6 +36,7 @@ export default {
                     this.message_error=response.data.message;
                 }
             }).catch(e=>{
+             
               console.log(e)
             })
         }
