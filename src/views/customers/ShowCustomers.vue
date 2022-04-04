@@ -26,7 +26,7 @@
         </tr>
       </tbody>
     </table>
-   <AddCustomer v-show="showModal" v-on:showOrHideModal="showOrHideModal" />
+   <AddCustomer v-show="showModal" v-on:showOrHideModal="showOrHideModal" v-on:refresh_onadd="getCustomers" />
   </div>
 </template>
 <script>
