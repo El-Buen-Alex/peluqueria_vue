@@ -7,7 +7,7 @@ import auth from "../logic/auth";
 import ShowCustomers from '../views/customers/ShowCustomers.vue'
 
 import Appointments_ from '../views/Appointments/Apoointments_.vue'
-import Appointments_calendar from '../views/Appointments/Appointments_calendar.vue'
+import AppointmentsFinished from '../views/Appointments/AppointmentsFinished.vue'
 
 const routes = [
   {
@@ -24,6 +24,11 @@ const routes = [
         path: "/appointments",
         name: "Appointments",
         component: Appointments_,
+      },
+      {
+        path: "/appointments_finished",
+        name: "AppointmentsFinished",
+        component: AppointmentsFinished,
       }
     ]
   },

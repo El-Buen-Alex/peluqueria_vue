@@ -1,8 +1,9 @@
 import PeluqueriaApi from '../apis/PeluqueriaApi'
 
 export default {
-    getAppointments() {
-      return PeluqueriaApi.get('getAppointments');
+    getAppointments(customer_id=0) {
+      const data={customer_id}
+      return PeluqueriaApi.post('getAppointments', data);
     },
     addAppointment(customer_id,description, start_date_){
         const start_date=this.buildDateTime(start_date_)
@@ -24,5 +25,12 @@ export default {
     completeAppointment(appointment_id){
         const data={appointment_id}
         return PeluqueriaApi.post('completeAppointment', data);
-    }
+    },
+    registerAppointment(appointment_id, reason, amount){
+       const data={appointment_id, reason, amount}
+       return PeluqueriaApi.post('/registerAppointment', data)
+    },
+    getAppointmentsFinished(){
+      return PeluqueriaApi.get('/getAppointmentsFinished')
+   }
 };

@@ -26,6 +26,7 @@
 
     <AddAppointment_ :date_time="meeting? meeting:{}"  v-show="show_add_modal" v-on:showOrHideModal="showOrHideModal" v-on:refresh_onadd="changeStateMeeting"/>
     <AddAppointmentInfo v-show="show_info_cia" :cita="cita_information" v-on:showOrHideModalInformation="showOrHideModalInformation" />
+    <ShowAppointments />
   </div>
 </template>
 
@@ -33,7 +34,7 @@
 import VueMeetingSelector from "vue-meeting-selector";
 import AddAppointment_ from '../../components/Appointment/AddAppointment_.vue'
 import AddAppointmentInfo from '../../components/Appointment/Appointment_information.vue'
-
+import ShowAppointments from '../../components/Appointment/ShowAppointments.vue'
 
 import Appointments from '../../logic/appointments'
 export default {
@@ -176,7 +177,8 @@ export default {
   components:{
     AddAppointment_,
     VueMeetingSelector,
-    AddAppointmentInfo
+    AddAppointmentInfo,
+    ShowAppointments
   }
   
 };
