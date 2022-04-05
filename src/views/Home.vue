@@ -6,8 +6,11 @@
          <router-link to="/" class="bg-light fw-bold text-decoration-none w-100 py-2 px-5">Go to Home</router-link>
        </div>
        <div class="w-100 border border-light mt-5 mb-3"></div>
-        <div class="w-100">
+        <div class="w-100  mb-3">
          <router-link to="/customers" class="bg-light fw-bold text-decoration-none w-100 py-2 px-5">Customers</router-link>
+       </div>
+       <div class="w-100">
+         <router-link to="/appointments" class="bg-light fw-bold text-decoration-none w-50 py-2 px-5">Appointments</router-link>
        </div>
       </div> 
     </div>
